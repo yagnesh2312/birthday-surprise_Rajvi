@@ -92,25 +92,20 @@
       height: 500px;
       margin: auto;
       display: none;
-      animation: rotateCircle 30s linear infinite; /* Rotation */
     }
 
     .photo-item {
       position: absolute;
       width: 150px;
       height: 180px;
-      transform-origin: center;
       opacity: 0;
-      animation: fadeIn 1s forwards;
       text-align: center;
-      transition: transform 0.5s ease, box-shadow 0.3s ease;
+      transition: opacity 1s ease, transform 1s ease;
     }
 
-    /* Hover effect for each photo */
-    .photo-item:hover {
-      transform: scale(1.2) rotate(10deg);
-      z-index: 2;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    .photo-item.show {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .photo-frame {
@@ -120,7 +115,6 @@
       overflow: hidden;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       margin: 0 auto;
-      transition: transform 0.5s ease;
     }
 
     .photo-frame img {
@@ -161,16 +155,6 @@
       to { transform: translateY(100vh) rotate(360deg); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.5); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes rotateCircle {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
     @media (max-width: 600px) {
       .photo-circle { width: 350px; height: 350px; }
       .photo-item { width: 100px; height: 130px; }
@@ -185,7 +169,7 @@
     <div class="special-message">
       "To my special friend, Happy Birthday 💕🎂. Just like you’ve always been there for me, I’ll always be cheering for you—from today until the day you step foot in Canada and make your dream a reality. This is your year!"
     </div>
-    <button class="btn" onclick="revealPhotos()">🎁 Reveal Your Surprise</button>
+    <button class="btn" onclick="revealPhotos()">🎁 Oyy Pagal .... Reveal Your Surprise</button>
   </div>
 
   <div id="photoCircle" class="photo-circle"></div>
@@ -231,7 +215,6 @@
         photoItem.className = 'photo-item';
         photoItem.style.left = `${x}px`;
         photoItem.style.top = `${y}px`;
-        photoItem.style.animationDelay = `${index * 0.2}s`;
 
         const photoFrame = document.createElement('div');
         photoFrame.className = 'photo-frame';
@@ -251,6 +234,14 @@
       });
 
       circle.style.display = 'flex';
+
+      // Animate one by one
+      const items = document.querySelectorAll('.photo-item');
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          item.classList.add('show');
+        }, i * 800); // delay for each photo
+      });
     }
 
     function revealPhotos() {
@@ -267,5 +258,3 @@
   </script>
 </body>
 </html>
-
-
