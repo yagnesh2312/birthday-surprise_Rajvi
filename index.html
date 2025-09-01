@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Rajvi!</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -15,7 +14,7 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: radial-gradient(circle at top, #ffdde1, #ee9ca7, #ffdde1);
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
       color: #fff;
       min-height: 100vh;
       display: flex;
@@ -23,18 +22,16 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      transition: background 1s ease-in-out;
     }
 
     .container {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
+      max-width: 900px;
+      background: rgba(0, 0, 0, 0.7);
       border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
-      max-width: 800px;
-      width: 90%;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 1s ease;
     }
 
     h1 {
@@ -43,25 +40,23 @@
       background: linear-gradient(to right, #ff8a00, #da1b60);
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       animation: glow 2s infinite alternate;
     }
 
     .birthday-subtitle {
       font-size: 1.3rem;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: #fdbb2d;
     }
 
     .special-message {
       font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 30px;
-      background: rgba(255, 255, 255, 0.1);
+      line-height: 1.6;
+      margin: 20px 0;
       padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 15px;
-      font-style: italic;
     }
 
     .btn {
@@ -69,37 +64,38 @@
       color: white;
       border: none;
       padding: 15px 30px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       border-radius: 50px;
       cursor: pointer;
+      margin-top: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      font-weight: 600;
     }
 
     .btn:hover {
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
     }
 
     .photo-circle {
       position: relative;
-      width: 450px;
-      height: 450px;
+      width: 500px;
+      height: 500px;
       margin: auto;
       display: none;
-      animation: fadeIn 1s ease forwards;
     }
 
     .photo-item {
       position: absolute;
-      width: 130px;
-      height: 130px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid white;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transform-origin: center;
       opacity: 0;
-      animation: photoAppear 1s ease forwards;
+      animation: fadeIn 1s forwards;
     }
 
     .photo-item img {
@@ -107,32 +103,38 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
+      border: 4px solid white;
+      box-sizing: border-box;
     }
 
     .photo-name {
       position: absolute;
-      bottom: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-size: 0.9rem;
       font-weight: bold;
-      font-size: 1rem;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 5px 0;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
     }
 
     .confetti {
       position: fixed;
-      width: 12px;
-      height: 12px;
+      width: 15px;
+      height: 15px;
       opacity: 0.7;
       animation: fall linear forwards;
+      z-index: 1000;
       pointer-events: none;
-      z-index: 999;
     }
 
     @keyframes glow {
-      0% { text-shadow: 0 0 8px rgba(255, 138, 0, 0.5); }
-      100% { text-shadow: 0 0 25px rgba(218, 27, 96, 0.8); }
+      0% { text-shadow: 0 0 10px rgba(255, 138, 0, 0.5); }
+      100% { text-shadow: 0 0 30px rgba(218, 27, 96, 0.8); }
     }
 
     @keyframes fall {
@@ -140,28 +142,25 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
+      from { opacity: 0; transform: scale(0.5); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes photoAppear {
-      from { opacity: 0; transform: scale(0.5); }
-      to { opacity: 1; transform: scale(1); }
+    @media (max-width: 600px) {
+      .photo-circle { width: 350px; height: 350px; }
+      .photo-item { width: 100px; height: 100px; }
     }
   </style>
 </head>
 <body>
-  <div class="container" id="content">
+  <div class="container">
     <h1>Happy Birthday Rajvi!</h1>
-    <p class="birthday-subtitle">Wishing you endless happiness and laughter</p>
-
+    <p class="birthday-subtitle">Wishing you a day filled with joy and laughter</p>
     <div class="special-message">
-      "To the most amazing friend, may your birthday be as bright and wonderful as your soul!"
+      "To the most amazing friend anyone could ask for - may your birthday be as beautiful,
+      kind, and wonderful as you are. Here's to celebrating you today and always!"
     </div>
-
-    <button class="btn" onclick="revealPhotos()">
-      <i class="fas fa-gift"></i> Reveal Your Surprise
-    </button>
+    <button class="btn" onclick="revealPhotos()">🎁 Reveal Your Surprise</button>
   </div>
 
   <div id="photoCircle" class="photo-circle"></div>
@@ -169,69 +168,73 @@
   <script>
     const photoData = [
       { url: 'https://i.postimg.cc/k4D6MfxW/8-R.jpg', name: 'પાગલ' },
-      { url: 'https://i.postimg.cc/SNwLst4c/4-R.jpg', name: 'કુંભકરણ' },
-      { url: 'https://i.postimg.cc/15YFggmp/10-R.jpg', name: 'ગુસ્સેલ' },
-      { url: 'https://i.postimg.cc/W1GZ4NXP/7-R.jpg', name: 'મસ્તીખોર' },
-      { url: 'https://i.postimg.cc/VkxbR3bv/1-R.jpg', name: 'જાડી' },
-      { url: 'https://i.postimg.cc/qM7nMcTJ/9-R.jpg', name: 'ખુંખાર' }
+      { url: 'https://i.postimg.cc/QxtJ023s/Whats-App-Image-2025-03-01-at-1-10-58-PM-1.jpg', name: 'કુંભકરણ' },
+      { url: 'https://i.postimg.cc/5y31yH0c/Whats-App-Image-2025-03-01-at-1-11-09-PM-1.jpg', name: 'ગુસ્સેલ' },
+      { url: 'https://i.postimg.cc/NjbySM7z/Whats-App-Image-2025-03-01-at-1-10-58-PM.jpg', name: 'મસ્તીખોર' },
+      { url: 'https://i.postimg.cc/P5BGtb4p/Whats-App-Image-2025-03-01-at-1-11-09-PM.jpg', name: 'જાડી' },
+      { url: 'https://i.postimg.cc/QxtJ023s/Y:/Rajvi/images/1_R.jpg', name: 'ખુંખાર' }
     ];
 
     function createConfetti() {
-      const colors = ['#FFD700', '#DA1B60', '#6A11CB', '#2575FC', '#FF8A00'];
-      for (let i = 0; i < 80; i++) {
+      const colors = ['#ffd700', '#da1b60', '#6a11cb', '#2575fc', '#ff8a00'];
+      for (let i = 0; i < 100; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.left = Math.random() * 100 + 'vw';
         confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = Math.random() * 15 + 5 + 'px';
+        confetti.style.height = Math.random() * 15 + 5 + 'px';
         document.body.appendChild(confetti);
-
         setTimeout(() => confetti.remove(), 5000);
       }
     }
 
-    function arrangePhotos() {
+    function arrangePhotosInCircle() {
       const circle = document.getElementById('photoCircle');
       const radius = 180;
-      const center = 225;
+      const centerX = circle.offsetWidth / 2;
+      const centerY = circle.offsetHeight / 2;
 
+      circle.innerHTML = '';
       photoData.forEach((data, index) => {
         const angle = (index / photoData.length) * 2 * Math.PI;
-        const x = center + radius * Math.cos(angle) - 65;
-        const y = center + radius * Math.sin(angle) - 65;
+        const x = centerX + radius * Math.cos(angle) - 75;
+        const y = centerY + radius * Math.sin(angle) - 75;
 
-        const photo = document.createElement('div');
-        photo.className = 'photo-item';
-        photo.style.left = `${x}px`;
-        photo.style.top = `${y}px`;
-        photo.style.animationDelay = `${index * 0.2}s`;
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item';
+        photoItem.style.left = `${x}px`;
+        photoItem.style.top = `${y}px`;
+        photoItem.style.animationDelay = `${index * 0.2}s`;
 
         const img = document.createElement('img');
         img.src = data.url;
+        img.alt = `Photo ${index + 1}`;
 
-        const label = document.createElement('div');
-        label.className = 'photo-name';
-        label.textContent = data.name;
+        const nameTag = document.createElement('div');
+        nameTag.className = 'photo-name';
+        nameTag.textContent = data.name;
 
-        photo.appendChild(img);
-        photo.appendChild(label);
-        circle.appendChild(photo);
+        photoItem.appendChild(img);
+        photoItem.appendChild(nameTag);
+        circle.appendChild(photoItem);
       });
+
+      circle.style.display = 'block';
     }
 
     function revealPhotos() {
-      document.getElementById('content').style.opacity = '0';
+      document.querySelector('.container').style.opacity = '0';
       setTimeout(() => {
-        document.getElementById('content').style.display = 'none';
-        document.getElementById('photoCircle').style.display = 'block';
-        arrangePhotos();
-        createConfetti();
-        setInterval(createConfetti, 3000);
-      }, 800);
+        document.querySelector('.container').style.display = 'none';
+        arrangePhotosInCircle();
+      }, 1000);
+      createConfetti();
+      setInterval(createConfetti, 3000);
     }
 
-    window.onload = createConfetti;
+    window.onload = () => createConfetti();
   </script>
 </body>
 </html>
-
