@@ -3,91 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Rajvi!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Birthday Surprise</title>
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: white;
       text-align: center;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 25px;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      transition: opacity 0.6s ease;
+      overflow-x: hidden;
     }
 
     h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 4rem;
-      background: linear-gradient(to right, #ff8a00, #da1b60);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      animation: glow 2s infinite alternate;
+      font-size: 3rem;
+      margin-top: 50px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .birthday-subtitle {
       font-size: 1.5rem;
-      margin-bottom: 30px;
-      color: #fdbb2d;
-    }
-
-    .special-message {
-      font-size: 1.3rem;
-      line-height: 1.8;
-      margin: 30px 0;
-      padding: 25px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      font-style: italic;
-      transition: opacity 0.5s;
+      margin-bottom: 20px;
     }
 
     .btn {
-      background: linear-gradient(to right, #da1b60, #ff8a00);
-      color: white;
-      border: none;
-      padding: 18px 35px;
+      padding: 15px 40px;
       font-size: 1.2rem;
+      border: none;
+      background: #ff4081;
+      color: white;
       border-radius: 50px;
       cursor: pointer;
-      margin: 25px 0;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      font-weight: 600;
+      margin-top: 20px;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+      background: #e91e63;
+      transform: scale(1.1);
     }
 
     .photo-circle {
       position: relative;
       width: 600px;
       height: 600px;
-      margin: 0 auto;
+      margin: 50px auto;
       display: none;
     }
 
@@ -97,125 +57,89 @@
       height: 180px;
       border-radius: 50%;
       overflow: visible;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       transform-origin: center;
       opacity: 0;
+      z-index: 2;
     }
 
     .photo-item img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       border-radius: 50%;
+      object-fit: cover;
       border: 5px solid white;
-      transition: transform 0.5s;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .photo-item img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     }
 
     .photo-name {
       position: absolute;
-      top: 105%;
+      bottom: -30px;
       left: 50%;
       transform: translateX(-50%);
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: bold;
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px 8px;
+      border-radius: 12px;
       white-space: nowrap;
-    }
-
-    .photo-item:hover img {
-      transform: scale(1.1);
+      z-index: 3;
     }
 
     .confetti {
       position: fixed;
-      width: 15px;
-      height: 15px;
-      opacity: 0.7;
-      animation: fall linear forwards;
-      z-index: 1000;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
       pointer-events: none;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px rgba(255, 138, 0, 0.5); }
-      100% { text-shadow: 0 0 30px rgba(218, 27, 96, 0.8); }
+      animation: fall 3s linear infinite;
     }
 
     @keyframes fall {
-      to { transform: translateY(100vh) rotate(360deg); }
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(720deg); }
     }
 
     @keyframes photoAppear {
-      from {
-        opacity: 0;
-        transform: scale(0) rotate(-180deg);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) rotate(0);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .photo-circle { width: 400px; height: 400px; }
-      .photo-item { width: 130px; height: 130px; }
-    }
-
-    @media (max-width: 500px) {
-      .photo-circle { width: 300px; height: 300px; }
-      .photo-item { width: 100px; height: 100px; }
-      h1 { font-size: 3rem; }
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container" id="mainContainer">
-    <h1>Happy Birthday Rajvi!</h1>
-    <p class="birthday-subtitle">Wishing you a day filled with joy and laughter</p>
-    <div class="special-message">
-      "To the most amazing friend anyone could ask for - may your birthday be as beautiful, 
-      kind, and wonderful as you are. Here's to celebrating you today and always!"
-    </div>
-    <button class="btn" onclick="revealPhotos()">🎁 Reveal Your Surprise</button>
-  </div>
+  <h1>🎉 Happy Birthday Rajvi! 🎉</h1>
+  <p class="birthday-subtitle">A special surprise for you ❤️</p>
+  <button class="btn" onclick="revealPhotos()">Click for Surprise</button>
+  <p class="instructions">Click the button to see your special memories!</p>
 
-  <div id="photoCircle" class="photo-circle"></div>
+  <div class="photo-circle" id="photoCircle"></div>
 
   <script>
-    // Photo data
     const photoData = [
-      { url: 'https://i.postimg.cc/k4D6MfxW/8-R.jpg', name: 'પાગલ' },
-      { url: 'https://i.postimg.cc/QxtJ023s/Whats-App-Image-2025-03-01-at-1-10-58-PM-1.jpg', name: 'કુંભકરણ' },
-      { url: 'https://i.postimg.cc/5y31yH0c/Whats-App-Image-2025-03-01-at-1-11-09-PM-1.jpg', name: 'ગુસ્સેલ' },
-      { url: 'https://i.postimg.cc/NjbySM7z/Whats-App-Image-2025-03-01-at-1-10-58-PM.jpg', name: 'મસ્તીખોર' },
-      { url: 'https://i.postimg.cc/P5BGtb4p/Whats-App-Image-2025-03-01-at-1-11-09-PM.jpg', name: 'જાડી' },
-      { url: 'https://i.postimg.cc/k4D6MfxW/8-R.jpg', name: 'ખુંખાર' }
+      { url: "https://i.postimg.cc/QxtJ023s/Whats-App-Image-2025-03-01-at-1-10-58-PM-1.jpg", name: "Rajvi" },
+      { url: "https://i.postimg.cc/QxtJ023s/Whats-App-Image-2025-03-01-at-1-10-58-PM-1.jpg", name: "Friend 1" },
+      { url: "https://i.postimg.cc/5y31yH0c/Whats-App-Image-2025-03-01-at-1-11-09-PM-1.jpg", name: "Friend 2" },
+      { url: "https://i.postimg.cc/NjbySM7z/Whats-App-Image-2025-03-01-at-1-10-58-PM.jpg", name: "Friend 3" },
+      { url: "https://i.postimg.cc/P5BGtb4p/Whats-App-Image-2025-03-01-at-1-11-09-PM.jpg", name: "Friend 4" }
     ];
-
-    function createConfetti() {
-      const colors = ['#ffd700', '#da1b60', '#6a11cb', '#2575fc', '#ff8a00'];
-      for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = Math.random() * 15 + 5 + 'px';
-        confetti.style.height = Math.random() * 15 + 5 + 'px';
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 5000);
-      }
-    }
 
     function arrangePhotosInCircle() {
       const circle = document.getElementById('photoCircle');
-      const radius = 220; // smaller radius
+      const radius = 230; // distance from center
       const centerX = 300;
       const centerY = 300;
 
-      circle.innerHTML = '';
+      circle.querySelectorAll('.photo-item').forEach(item => item.remove());
 
       photoData.forEach((data, index) => {
         const angle = (index / photoData.length) * 2 * Math.PI;
@@ -230,6 +154,7 @@
 
         const img = document.createElement('img');
         img.src = data.url;
+        img.alt = data.name;
 
         const nameTag = document.createElement('div');
         nameTag.className = 'photo-name';
@@ -244,13 +169,27 @@
     }
 
     function revealPhotos() {
-      document.getElementById('mainContainer').style.display = 'none';
+      document.querySelector('.btn').style.display = 'none';
+      document.querySelector('.instructions').style.display = 'none';
+      document.querySelector('h1').style.display = 'none';
+      document.querySelector('.birthday-subtitle').style.display = 'none';
+
       arrangePhotosInCircle();
       createConfetti();
-      setInterval(createConfetti, 3000);
+      setInterval(createConfetti, 2000);
     }
 
-    window.onload = () => createConfetti();
+    function createConfetti() {
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
   </script>
 </body>
 </html>
